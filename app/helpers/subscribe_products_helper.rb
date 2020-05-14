@@ -1,0 +1,2 @@
+module SubscribeProductsHelper
+end

@@ -1,0 +1,2 @@
+module SubscribeMediaHelper
+end

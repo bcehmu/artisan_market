@@ -1,0 +1,17 @@
+<h1>Products#edit</h1>
+<p>Find me in app/views/products/edit.html.erb</p>
+
+<% ability=Ability.new(current_user) %>
+<% if ability.can? :write, Product %>
+
+    <%= form_for @product do |p| %>
+    name: 
+    <%= p.text_field(:name) %>
+    <%= p.submit "Update"%>
+    <% end %>
+
+<% else %>
+    <%# render :file => "/products/index.html.erb" %>
+    <%= render plain: "Not authorized for editing this product." %>
+    <%# redirect_to "/products" %>
+<% end %>
