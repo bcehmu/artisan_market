@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  get 'contacts/index'
+  get 'contacts/edit'
+  get 'contacts/show'
+  get 'contacts/update'
+  get 'filters/index'
+  get 'filters/search'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -33,6 +39,14 @@ Rails.application.routes.draw do
   resources :luthiers
 
   resources :musicians
+
+  resources :subscribe_luthiers
+
+  resources :subscribe_musicians
+
+  resources :subscribe_products
+
+  resources :subscribe_media
 
   # get 'subscribe_media/index'
   # get 'subscribe_media/edit'

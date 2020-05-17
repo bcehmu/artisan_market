@@ -1,0 +1,36 @@
+
+<% @contacts.each do |c| %>
+<div class="contactcard container border border-dark rounded">
+    <div class="row">
+        <%= image_tag c.logo, class: 'm-2 rounded', width: '95%', height: '30%' if c.logo.attached? %>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col"><%= c.name %></div>
+        <div class="col"><%= c.description %></div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col"><%= c.email %></div>
+        <div class="col"><%= c.prefered_frequency %></div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col"><%= c.address %></div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col">
+            <% if c.user == current_user %>
+                <%= link_to 'Edit', edit_contact_path(c) %>
+            <% elsif c.user.luthier != nil %>
+                <%= link_to 'Subscribe Luthier', subscribe_luthier_path(c.user.luthier), remote: true, method: :patch %>
+            <% elsif c.user.musician != nil %>
+                <%= link_to 'Subscribe Musician', subscribe_musician_path(c.user.musician), remote: true, method: :patch %>
+            <% end %>
+        </div>
+    </div>
+
+</div>
+
+<% end %>

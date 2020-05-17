@@ -1,7 +1,12 @@
+
+
+
+<%= render "shared/nav_luthier" %>
+
+<session>
 <h1>Luthiers#index</h1>
 <p>Find me in app/views/luthiers/index.html.erb</p>
+</session>
 
-<% @products.each do |p| %>
-<div class="product">
-<%= p.name %></div>
-<% end %>
+
+<%= render "shared/products_content" %>

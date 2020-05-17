@@ -5,13 +5,39 @@
 <% if ability.can? :write, Product %>
 
     <%= form_for @product do |p| %>
-    name: 
+    <%= p.label :name %>
     <%= p.text_field(:name) %>
+    <%= p.label :category %>
+    <%= p.text_field(:category) %>
+    <%= p.label :description %>
+    <%= p.text_area(:description) %>
+    <%= p.label :base_price %>
+    <%= p.number_field(:base_price) %>
+    <%= p.label :picture %>
+    <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+    <%= p.submit "Update"%>
+    <% end %>
+
+<% elsif current_user == @product.luthier.user %>
+    <%= form_for @product do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field(:name) %>
+    <%= p.label :category %>
+    <%= p.text_field(:category) %>
+    <%= p.label :description %>
+    <%= p.text_area(:description) %>
+    <%= p.label :base_price %>
+    <%= p.number_field(:base_price) %>
+    <%= p.label :picture %>
+    <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
     <%= p.submit "Update"%>
     <% end %>
 
 <% else %>
     <%# render :file => "/products/index.html.erb" %>
+    <%= current_user %>
+    <%= @product.luthier %>
+    <%= @product.name %>
     <%= render plain: "Not authorized for editing this product." %>
     <%# redirect_to "/products" %>
 <% end %>

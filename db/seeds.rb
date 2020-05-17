@@ -24,3 +24,6 @@ end
 for i in (1...20) do
     Medium.create(name: "Medium #{i.to_s}", description: "Playthrough and Review #{i.to_s}", musician_id: 4, link: 'https://www.youtube.com/')
 end 
+
+# SubscribeMusician.create(user_id: 4, musician_id: 4)
+# SubscribeLuthier.create(user_id: 4, luthier_id: 4)

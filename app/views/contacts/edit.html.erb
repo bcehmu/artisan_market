@@ -1,0 +1,29 @@
+<h1>Contacts#edit</h1>
+<p>Find me in app/views/contacts/edit.html.erb</p>
+
+<%= render "shared/nav_luthier" %>
+
+
+
+<% if current_user == @contact.user %>
+    <%= form_for @contact do |c| %>
+    <%= c.label :name %>
+    <%= c.text_field(:name) %>
+    <%= c.label :description %>
+    <%= c.text_area(:description) %>
+    <%= c.label :email %>
+    <%= c.text_area(:email) %>
+    <%= c.label :prefered_frequency %>
+    <%= c.number_field(:prefered_frequency) %>
+    <%= c.label :address %>
+    <%= c.text_area(:address) %>
+    <%= c.label :avatar %>
+    <%= c.file_field :avatar, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+    <%= c.label :logo %>
+    <%= c.file_field :logo, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+    <%= c.submit "Update"%>
+    <% end %>
+
+<% else %>
+    <%= render plain: "Not authorized for editing this contact." %>
+<% end %>

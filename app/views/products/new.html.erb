@@ -1,0 +1,17 @@
+
+
+<% if current_user.luthier != nil %>
+<%= form_for @prod do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field(:name) %>
+    <%= p.label :category %>
+    <%= p.text_field(:category) %>
+    <%= p.label :description %>
+    <%= p.text_area(:description) %>
+    <%= p.label :base_price %>
+    <%= p.number_field(:base_price) %>
+    <%= p.label :picture %>
+    <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+    <%= p.submit "Create"%>
+<% end %>
+<% end %>

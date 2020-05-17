@@ -1,0 +1,33 @@
+
+<% @products.each do |p| %>
+<div class="productcard container border border-dark rounded">
+    <div class="row">
+        <%= image_tag p.picture, class: 'product-picture m-2 rounded', width: '95%' if p.picture.attached? %>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col"><%= p.name %></div>
+        <div class="col"><%= p.description %></div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col">Base Price: <%= p.base_price %></div>
+        
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col">
+            <%= link_to 'Subscribe Product', subscribe_product_path(Product.find(p.id)), remote: true, method: :patch %>
+        </div>
+        <div class="col">
+            <% if p.luthier == current_user.luthier %>
+                <%= link_to 'Edit', edit_product_path(p) %>
+            <% else %>
+                <%= link_to 'Subscribe Luthier', subscribe_luthier_path(p.luthier), remote: true, method: :patch %>
+            <% end %>
+        </div>
+    </div>
+
+</div>
+
+<% end %>
