@@ -6,23 +6,56 @@
 
 
 <% if current_user == @contact.user %>
+    
     <%= form_for @contact do |c| %>
-    <%= c.label :name %>
-    <%= c.text_field(:name) %>
-    <%= c.label :description %>
-    <%= c.text_area(:description) %>
-    <%= c.label :email %>
-    <%= c.text_area(:email) %>
-    <%= c.label :prefered_frequency %>
-    <%= c.number_field(:prefered_frequency) %>
-    <%= c.label :address %>
-    <%= c.text_area(:address) %>
-    <%= c.label :avatar %>
-    <%= c.file_field :avatar, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
-    <%= c.label :logo %>
-    <%= c.file_field :logo, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
-    <%= c.submit "Update"%>
+    <div class="container p-3">
+
+        <div class="row justify-content-center border border-dark rounded p-2">
+            <div class="col">
+            <%= image_tag @contact.avatar, class: 'm-2 rounded img-thumbnail' if @contact.avatar.attached? %>
+            </div>
+            <div class="col  align-self-center">
+                <div class="row">
+                    <%= c.label :avatar %>
+                    <%= c.file_field :avatar, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+                <div class="row">
+                    <%= c.label :name %>
+                    <%= c.text_field(:name) %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center border border-dark rounded p-2">
+            <%= c.label :description %>
+            <%= c.text_area(:description, cols: "80", rows: "6")%>
+        </div>
+        <div class="row justify-content-between  border border-dark rounded p-2">
+            <div class="col">
+                <div class="row justify-content-center"><%= c.label :email %></div>
+                <div class="row justify-content-center"><%= c.text_area(:email) %></div>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center"><%= c.label :prefered_frequency %></div>
+                <div class="row justify-content-center"><%= c.number_field(:prefered_frequency) %></div>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center"><%= c.label :address %></div>
+                <div class="row justify-content-center"><%= c.text_area(:address) %></div>
+            </div>
+        </div>
+        <div class="row justify-content-center p-2">
+            <%= image_tag @contact.logo, class: 'm-2 rounded img-fluid' if @contact.logo.attached? %>
+        </div>
+        <div class="row border border-dark rounded p-2">
+            <%# image_tag c.logo, class: 'm-2 rounded', width: '90%', height: "15%" if c.logo.attached? %>
+            <%= c.label :logo %>
+            <%= c.file_field :logo, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+        </div>
+        <%= c.submit "Update"%>
+    </div>
     <% end %>
+
 
 <% else %>
     <%= render plain: "Not authorized for editing this contact." %>

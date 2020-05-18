@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :subscribe_media
 
+  resources :contacts
+
   # get 'subscribe_media/index'
   # get 'subscribe_media/edit'
   # get 'subscribe_products/index'

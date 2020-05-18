@@ -6,6 +6,9 @@ class LuthiersController < ApplicationController
 
   def show
     # @luthier = Luthier.find(params[:id])
+    if params[:id] != nil
+      @c = Contact.where(user: Luthier.find(params[:id]).user.id).first
+    end
   end
 
   def edit
@@ -17,6 +20,7 @@ class LuthiersController < ApplicationController
     # @products = Product.where(luthier: current_user.luthier)
     if params[:id] != nil
       @products = Product.where(luthier: params[:id])
+      
     else
       @products = Product.all
     end

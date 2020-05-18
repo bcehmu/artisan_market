@@ -5,8 +5,9 @@
         <li class="nav-item dropdown col">
         <div class="topoption"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Edit+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="" class="dropdown-item">Profile</a>
+                <%= link_to "Profile", contacts_edit_path(current_user.contact), class: "dropdown-item" %>
                 <%= link_to "Store", luthier_path(current_user.luthier), class: "dropdown-item" %>
+                <%= link_to "New Product", new_product_path, class: "dropdown-item" %>
                 <a href="" class="dropdown-item">Subscription</a>
             </div>
         </div>

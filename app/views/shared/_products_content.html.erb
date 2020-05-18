@@ -22,6 +22,7 @@
         <div class="col">
             <% if p.luthier == current_user.luthier %>
                 <%= link_to 'Edit', edit_product_path(p) %>
+                <%= link_to 'Delete', product_path(p), method: "delete"%>
             <% else %>
                 <%= link_to 'Subscribe Luthier', subscribe_luthier_path(p.luthier), remote: true, method: :patch %>
             <% end %>

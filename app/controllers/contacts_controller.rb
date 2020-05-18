@@ -4,7 +4,12 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @contact = Contact.find(params[:id])
+    @contact = Contact.where(user_id: current_user.id).first
+    if @contact == nil
+      @contact = Contact.create(user_id: current_user.id)
+      @contact.save
+    end
+
   end
 
   def show
@@ -24,6 +29,6 @@ class ContactsController < ApplicationController
 
   private
   def setup
-    @products = Product.all
+    @contacts = Contact.all
   end
 end
