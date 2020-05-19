@@ -24,6 +24,7 @@ For both, a custom instrument or a custome promotion could be either a wonderful
 - [pg_search](https://github.com/Casecommons/pg_search) for filter/search functionality
 - [Bootstrap](https://getbootstrap.com/) for front-end styling
 - [AWS S3](https://aws.amazon.com/) for media storage
+- [Heroku](https://www.heroku.com/) for deployment
 
 # Features
 
