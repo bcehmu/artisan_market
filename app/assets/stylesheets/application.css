@@ -14,3 +14,7 @@
  *= require_self
  */
 
+.artisan {
+    background-image: url("artisan_market_bg.jpg");
+    background-size: cover;
+}
