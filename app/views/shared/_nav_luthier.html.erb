@@ -1,9 +1,9 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light .container-fluid">
+<nav class="navbar navbar-expand-sm navbar-light bg-light .container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto container">
-        <li class="nav-item dropdown col">
-        <div class="topoption"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Edit+ </a>
+        <li class="nav-item dropdown col ">
+        <div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Edit+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", contacts_edit_path(current_user.contact), class: "dropdown-item" %>
                 <%= link_to "Store", luthier_path(current_user.luthier), class: "dropdown-item" %>

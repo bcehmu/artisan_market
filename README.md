@@ -22,7 +22,8 @@ For both, a custom instrument or a custome promotion could be either a wonderful
 - Ruby on Rails, Postgresql as database
 - [devise + cancancan + rolify]([https://](https://github.com/RolifyCommunity/rolify/wiki/Devise---CanCanCan---rolify-Tutorial)) for authentication and authorization
 - [pg_search](https://github.com/Casecommons/pg_search) for filter/search functionality
-- [AWS](https://aws.amazon.com/) for deployment and storage
+- [Bootstrap](https://getbootstrap.com/) for front-end styling
+- [AWS S3](https://aws.amazon.com/) for media storage
 
 # Features
 
