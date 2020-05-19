@@ -45,10 +45,10 @@
     <% end %>
 
 <% else %>
-    <%# render :file => "/products/index.html.erb" %>
-    <%= current_user %>
-    <%= @product.luthier %>
-    <%= @product.name %>
+
+    <%# current_user %>
+    <%# @product.luthier %>
+    <%# @product.name %>
     <%= render plain: "Not authorized for editing this product." %>
     <%# redirect_to "/products" %>
 <% end %>

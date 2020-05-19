@@ -9,7 +9,8 @@
         <div class="topoption"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Edit+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", contacts_edit_path(current_user.contact), class: "dropdown-item" %>
-                <%= link_to "Apply for Role", contacts_edit_path(current_user.contact), class: "dropdown-item" %>
+                <%= link_to "Apply for Role-Luthier", luthier_invitations_edit_path, class: "dropdown-item" %>
+                <%= link_to "Apply for Role-Musician", musician_invitations_edit_path, class: "dropdown-item" %>
                 <a href="" class="dropdown-item">Subscription</a>
             </div>
         </div>
@@ -19,7 +20,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="" class="dropdown-item">Message</a>
                 <div class="dropdown-divider"></div>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to ("Logout: " + current_user.email), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
         </div>
         </li>
@@ -27,8 +28,10 @@
         <div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Browse+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
-                <%= link_to "Browse", products_path, class: "dropdown-item" %>
-                <%= link_to "Filter", filters_search_path, class: "dropdown-item" %>
+                <%= link_to "Browse Products", products_path, class: "dropdown-item" %>
+                <%= link_to "Browse Media", media_path, class: "dropdown-item" %>
+                <%= link_to "Filter Products", filters_search_path(type: "product"), class: "dropdown-item" %>
+                <%= link_to "Filter Media", filters_search_path(type: "medium"), class: "dropdown-item" %>
                 <!--- <form class="form-inline my-2 my-lg-0 dropdown-item" action="/filters/search">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="word">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

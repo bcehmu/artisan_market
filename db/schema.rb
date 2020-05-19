@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_122302) do
+ActiveRecord::Schema.define(version: 2020_05_19_031804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_05_17_122302) do
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
+  create_table "luthier_invitations", force: :cascade do |t|
+    t.bigint "luthier_id", null: false
+    t.string "msg"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["luthier_id"], name: "index_luthier_invitations_on_luthier_id"
+    t.index ["user_id"], name: "index_luthier_invitations_on_user_id"
+  end
+
   create_table "luthiers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "description"
@@ -75,6 +85,16 @@ ActiveRecord::Schema.define(version: 2020_05_17_122302) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["musician_id"], name: "index_media_on_musician_id"
+  end
+
+  create_table "musician_invitations", force: :cascade do |t|
+    t.bigint "musician_id", null: false
+    t.string "msg"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["musician_id"], name: "index_musician_invitations_on_musician_id"
+    t.index ["user_id"], name: "index_musician_invitations_on_user_id"
   end
 
   create_table "musicians", force: :cascade do |t|
@@ -176,8 +196,12 @@ ActiveRecord::Schema.define(version: 2020_05_17_122302) do
   add_foreign_key "invitations", "luthiers"
   add_foreign_key "invitations", "musicians"
   add_foreign_key "invitations", "users"
+  add_foreign_key "luthier_invitations", "luthiers"
+  add_foreign_key "luthier_invitations", "users"
   add_foreign_key "luthiers", "users"
   add_foreign_key "media", "musicians"
+  add_foreign_key "musician_invitations", "musicians"
+  add_foreign_key "musician_invitations", "users"
   add_foreign_key "musicians", "users"
   add_foreign_key "pending_users", "users"
   add_foreign_key "products", "luthiers"

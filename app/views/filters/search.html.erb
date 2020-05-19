@@ -1,15 +1,10 @@
 <h1>Filters#search</h1>
 <p>Find me in app/views/filters/search.html.erb</p>
 
-<% if current_user.luthier != nil %>
-<%= render "shared/nav_luthier" %>
-<% elsif current_user.musician != nil %>
-<%= render "shared/nav_luthier" %>
-<% else %>
-<%= render "shared/nav_user" %>
-<% end%>
+<%= render "shared/chose_nav" %>
 
-<h1 class='container-fluid mb-0 mt-0'>Search in Products</h1>
+
+<h1 class='container-fluid mb-0 mt-0'>Search in Products/Media</h1>
 <form method='GET'>
     
     <ul id="explain">
@@ -19,9 +14,18 @@
     <ul>   
     <br>
 
-    
-<%= form_with(url: '/filters', mehtod: "get") do %>
-    <%= label_tag(:label, "Word to be searched for") %>
-    <%= text_field_tag(:search) %>
-    <%= submit_tag("search") %>
+<% if params[:type] == "product" %>
+    <%= form_with(url: '/filters', method: "get") do %>
+        <%= label_tag(:label, "Word to be searched for") %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag("search in products") %>
+    <% end %>
+<% end %>
+
+<% if params[:type] == "medium" %>
+    <%= form_with(url: '/filters', method: "get") do %>
+        <%= label_tag(:label, "Word to be searched for") %>
+        <%= text_field_tag(:search_medium) %>
+        <%= submit_tag("search in media") %>
+    <% end %>
 <% end %>

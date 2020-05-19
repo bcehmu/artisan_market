@@ -4,4 +4,13 @@ class HomesController < ApplicationController
 
   def search
   end
+
+  def apply
+    
+  end
+
+  def applym
+  end
+
+
 end

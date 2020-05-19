@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get 'musician_invitations/index'
+  get 'musician_invitations/new'
+  get 'musician_invitations/edit'
+  get 'musician_invitations/update'
+  get 'musician_invitations/destroy'
+  get 'luthier_invitations/index'
+  get 'luthier_invitations/new'
+  get 'luthier_invitations/edit'
+  get 'luthier_invitations/update'
+  get 'luthier_invitations/destroy'
   get 'contacts/index'
   get 'contacts/edit'
   get 'contacts/show'
@@ -49,6 +59,14 @@ Rails.application.routes.draw do
   resources :subscribe_media
 
   resources :contacts
+
+  resources :luthier_invitations
+
+  resources :musician_invitations
+
+  get 'homes/apply', to: 'homes#apply' , as: 'apply'
+
+  get 'homes/applym', to: 'homes#applym' , as: 'applym'
 
   # get 'subscribe_media/index'
   # get 'subscribe_media/edit'

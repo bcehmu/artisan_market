@@ -4,7 +4,11 @@ class FiltersController < ApplicationController
     if params[:search]
         redirect_to ("/products?search=#{params[:search]}")
     else
-      redirect_to ("/filters/search")
+      if params[:search_medium]
+        redirect_to ("/media?search=#{params[:search]}")
+      else
+        redirect_to ("/filters/search")
+      end
     end
   end
 
@@ -13,7 +17,11 @@ class FiltersController < ApplicationController
       if params[:search]
           redirect_to ("/products?search=#{params[:search]}")
       else
-        # redirect_to ("/products")
+        if params[:search_medium]
+          redirect_to ("/media?search=#{params[:search_medium]}")
+        else
+          # redirect_to ("/media")
+        end
       end
   end
 end

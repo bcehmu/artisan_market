@@ -14,6 +14,19 @@ class LuthiersController < ApplicationController
   def edit
   end
 
+  def new
+    @u = Luthier.new
+    
+  end
+
+  def create
+    if params[:invitation] == @invitation_luthier
+      @u = Luthier.create(user: current_user)
+      @u.save
+    end
+  end 
+  
+
   private
   def luthier_setup
     
@@ -24,5 +37,7 @@ class LuthiersController < ApplicationController
     else
       @products = Product.all
     end
+
+    @invitation_luthier ="luthier_cool"
   end
 end

@@ -12,6 +12,15 @@ class MusiciansController < ApplicationController
 
   private
   def musicians_setup
-    @media = Medium.where("musician_id = #{params[:id]}")
+    if params[:id] != nil
+      @media = Medium.where(musician: params[:id])
+      
+    else
+      @media = Medium.all
+    end
+
+    @invitation_musician ="musician_cool"
   end
+
+  
 end

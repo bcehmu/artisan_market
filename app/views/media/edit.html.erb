@@ -2,3 +2,50 @@
 <p>Find me in app/views/media/edit.html.erb</p>
 
 <%= render "shared/chose_nav" %>
+
+
+
+
+<% if current_user == @medium.musician.user %>
+    <%= form_for @medium do |p| %>
+    <div class="container p-3">
+
+        <div class="row justify-content-center border border-dark rounded p-2">
+                <div class="col">
+                    <%= image_tag @medium.picture, class: 'm-2 rounded img-thumbnail' if @medium.picture.attached? %>
+                    <%= p.label :picture %>
+                    <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+                <div class="col align-self-center">
+                    <%= p.label(:name, class:"pr-2") %>
+                    <%= p.text_field(:name) %>
+                </div>
+                <div class="col align-self-center p-2">
+                    <%= p.label(:link, class:"pr-2") %>
+                    <%= p.text_field(:link) %>
+                </div>
+        </div>
+        <div class="row justify-content-center border border-dark rounded p-2">
+            
+            <div class="col align-self-center p-2">
+            <%= p.label(:description, class:"pr-2") %>
+            <%= p.text_area(:description, cols: "80", rows: "6") %>
+            </div>
+        </div>
+
+        <div class="row justify-content-center p-2">
+                
+                <%= p.submit "Create"%>
+        </div>
+
+    </div>
+<% end %>
+
+<% else %>
+
+    <%# current_user %>
+    <%# @medium.musician %>
+    <%# @medium.name %>
+    <% render plain: "Not authorized for editing this medium." %>
+    <%# redirect_to "/media" %>
+<% end %>
