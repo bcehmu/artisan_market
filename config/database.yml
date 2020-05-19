@@ -89,10 +89,10 @@ production:
   username: artisan_market
   password: <%= ENV['ARTISAN_MARKET_DATABASE_PASSWORD'] %>
 
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: postgres
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  # adapter: postgresql
+  # encoding: unicode
+  # database: <%= ENV['RDS_DB_NAME'] %>
+  # username: postgres
+  # password: <%= ENV['RDS_PASSWORD'] %>
+  # host: <%= ENV['RDS_HOSTNAME'] %>
+  # port: <%= ENV['RDS_PORT'] %>
