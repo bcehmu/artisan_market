@@ -16,6 +16,7 @@ class SubscribeMusiciansController < ApplicationController
     else
       SubscribeMusician.where(user_id: current_user.id, musician_id: params[:id].to_i).delete_all
     end
+    redirect_to media_path
   end
 
   private

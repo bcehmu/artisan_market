@@ -14,6 +14,7 @@ class SubscribeMediaController < ApplicationController
     else
       SubscribeMedium.where(user_id: current_user.id, medium_id: params[:id].to_i).delete_all
     end
+    redirect_to media_path
   end
 
   private

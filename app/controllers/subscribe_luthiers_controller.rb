@@ -17,7 +17,7 @@ class SubscribeLuthiersController < ApplicationController
     else
       SubscribeLuthier.where(user_id: current_user.id, luthier_id: params[:id].to_i).delete_all
     end
-  
+    redirect_to products_path
   end
 
   private

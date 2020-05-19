@@ -16,6 +16,7 @@ class SubscribeProductsController < ApplicationController
     else
       SubscribeProduct.where(user_id: current_user.id, product_id: params[:id].to_i).delete_all
     end
+    redirect_to products_path
   end
 
   private
