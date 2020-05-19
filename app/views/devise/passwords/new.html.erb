@@ -1,4 +1,7 @@
-<h2>Forgot your password?</h2>
+
+<div class="container pt-4">
+<div class=" row justify-content-around">
+<h2 class="justify-content-start">Forgot password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -14,3 +17,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
