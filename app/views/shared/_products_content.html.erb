@@ -1,6 +1,6 @@
 
 <% @products.each do |p| %>
-<div class="productcard container border border-dark rounded">
+<div class="productcard container border border-dark rounded ">
     <div class="row">
         <%= image_tag p.picture, class: 'product-picture m-2 rounded', width: '95%' if p.picture.attached? %>
     </div>

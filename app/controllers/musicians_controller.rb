@@ -5,6 +5,9 @@ class MusiciansController < ApplicationController
   end
 
   def show
+    if params[:id] != nil
+      @c = Contact.where(user: Musician.find(params[:id]).user.id).first
+    end
   end
 
   def edit
@@ -19,7 +22,7 @@ class MusiciansController < ApplicationController
       @media = Medium.all
     end
 
-    @invitation_musician ="musician_cool"
+    # @invitation_musician ="musician_cool"
   end
 
   

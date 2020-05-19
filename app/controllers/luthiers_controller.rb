@@ -38,6 +38,6 @@ class LuthiersController < ApplicationController
       @products = Product.all
     end
 
-    @invitation_luthier ="luthier_cool"
+    # @invitation_luthier ="luthier_cool"
   end
 end
