@@ -15,6 +15,17 @@ class ProductsController < ApplicationController
   
 
   def index
+    if params["search"]
+      
+      @filter = params["search"]
+      @products = Product.all.search_product("#{@filter}")
+    else
+      @products = Product.all
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end  
     
   end
 

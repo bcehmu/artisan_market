@@ -5,6 +5,10 @@ class Product < ApplicationRecord
 
   resourcify
 
-
+  include PgSearch::Model
+  pg_search_scope :search_product, against: [:name, :description], using: {
+    tsearch: {negation: true}
+  }
+  
 
 end

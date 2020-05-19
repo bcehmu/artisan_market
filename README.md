@@ -52,4 +52,8 @@ rails g rolify Role User
 But at this point if run migration directly, there might be an error about migration, with [solution from rolify community](https://github.com/RolifyCommunity/rolify/issues/444)
 Following the article, edit version info in migration file of rolify Roles to [5.0].
 
+```bash
+yarn add rails-ujs
+```
+
 

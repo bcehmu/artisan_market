@@ -60,3 +60,5 @@ gem 'pg_search'
 gem "aws-sdk-s3"
 
 gem 'bootstrap'
+
+gem 'jquery-rails'

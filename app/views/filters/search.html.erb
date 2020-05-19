@@ -1,2 +1,27 @@
 <h1>Filters#search</h1>
 <p>Find me in app/views/filters/search.html.erb</p>
+
+<% if current_user.luthier != nil %>
+<%= render "shared/nav_luthier" %>
+<% elsif current_user.musician != nil %>
+<%= render "shared/nav_luthier" %>
+<% else %>
+<%= render "shared/nav_user" %>
+<% end%>
+
+<h1 class='container-fluid mb-0 mt-0'>Search in Products</h1>
+<form method='GET'>
+    
+    <ul id="explain">
+        <li>Input word to be searched</li>
+        <li>Prefix ! to negate</li>
+        <li>Square-bracket [] for multiple words, seperated with comma, without space</li>   
+    <ul>   
+    <br>
+
+    
+<%= form_with(url: '/filters', mehtod: "get") do %>
+    <%= label_tag(:label, "Word to be searched for") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("search") %>
+<% end %>
