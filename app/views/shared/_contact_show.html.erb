@@ -1,0 +1,51 @@
+<div class="pt-3">
+
+<% if @c != nil %>
+<% c = @c %>
+<div class="contactcard container border border-dark rounded">
+    <div class="row justify-content-center">
+        <div class="col border border-dark rounded justify-content-center">
+            <%= image_tag c.avatar, class: 'm-2 rounded img-thumbnail' if c.avatar.attached? %>
+        </div>
+    
+    
+        <div class="col justify-content-center align-self-center">
+            <div class="row justify-content-center">
+                <div class="col"><%= c.name %></div>
+                <div class="col"><%= c.description %></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col"><span>Email: </span><%= c.email %></div>
+                <div class="col"><%= c.prefered_frequency %></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <span>Address: </span><%= c.address %>
+            </div>
+
+            <div class="row justify-content-center">
+                
+                    <% if c.user == current_user %>
+                        <%= link_to 'Edit', edit_contact_path(c) %>
+                    <% elsif c.user.luthier != nil %>
+                        <%= link_to 'Subscribe Luthier', subscribe_luthier_path(c.user.luthier), remote: true, method: :patch %>
+                    <% elsif c.user.musician != nil %>
+                        <%= link_to 'Subscribe Musician', subscribe_musician_path(c.user.musician), remote: true, method: :patch %>
+                    <% end %>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <%= image_tag c.logo, class: 'm-2 rounded img-fluid' if c.logo.attached? %>
+    </div>
+
+</div>
+
+<% end %>
+
+
+</div>

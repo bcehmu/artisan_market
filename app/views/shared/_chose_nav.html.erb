@@ -1,0 +1,7 @@
+<% if current_user.luthier != nil %>
+<%= render "shared/nav_luthier" %>
+<% elsif current_user.musician != nil %>
+<%= render "shared/nav_musician" %>
+<% else %>
+<%= render "shared/nav_user" %>
+<% end%>

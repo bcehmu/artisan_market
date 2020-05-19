@@ -1,0 +1,54 @@
+
+
+
+<%= render "shared/chose_nav" %>
+
+<% if current_user.luthier != nil %>
+<%= form_for @invi do |p| %>
+    <div class="container p-3">
+
+        <div class="row justify-content-center border border-dark rounded p-2">
+                
+                <div class="col align-self-center">
+                    <div>Add Invitation Code</div>
+                    <%= p.label(:msg, class:"pr-2") %>
+                    <%= p.text_field(:msg) %>
+                </div>
+        </div>
+        <div class="row justify-content-center p-2">
+                
+                <%= p.submit "Create"%>
+        </div>
+
+    </div>
+<% end %>
+<% end %>
+
+<div class="container">
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Invitation Code</th>
+        <th scope="col">User</th>
+        <th scope="col">Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @invitations.each do |p| %>
+        <tr>
+        <td class=""><%= p.msg %></td>
+        <% if p.user_id != nil %>
+            <td class=""><%= User.find(p.user_id).email %></td>
+            <td class=""><%= link_to 'Watch', luthier_path(User.find(p.user_id).luthier), method: "get" %></td>
+        <% else %>
+            <td class=""> </td>
+            <td class=""><%= link_to 'Delete', luthier_invitation_path(p), method: "delete"%></td>
+        <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+
+</div>
+
+<h1>LuthierInvitations#new</h1>
+<p>Find me in app/views/luthier_invitations/new.html.erb</p>

@@ -1,0 +1,18 @@
+
+
+
+<%= render "shared/chose_nav" %>
+
+<% if ((current_user.luthier == nil) and (current_user.musician == nil)) %>
+    <div class="row justify-content-center p-2">
+
+    <%= form_for @inv do |i| %>
+    <div class="pr-2">Enter Invitation Code:</div>
+    <%= i.text_field(:msg) %>
+    <%= i.submit("Apply as Musician") %>
+    <% end %>
+    </div>
+<% end %>
+
+<h1>MusicianInvitations#edit</h1>
+<p>Find me in app/views/musician_invitations/edit.html.erb</p>

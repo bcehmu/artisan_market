@@ -1,0 +1,48 @@
+
+<% @media.each do |p| %>
+<div class="productcard container border border-dark rounded">
+    <div class="row">
+        <%= image_tag p.picture, class: 'product-picture m-2 rounded', width: '95%' if p.picture.attached? %>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col"><%= p.name %></div>
+        <div class="col"><%= p.description %></div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col">Link: <%= link_to p.link, p.link %></div>
+        
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col">
+            <% if p.musician == current_user.musician %>
+                <%= link_to 'Edit', edit_medium_path(p) %>
+                <%= link_to 'Delete', medium_path(p), method: "delete"%>
+            <% else %>
+                <div id="freshable">
+                <% if SubscribeMedium.where(user: current_user, medium: p).count == 0 %>
+                    <%= link_to 'Subscribe Medium', subscribe_medium_path(p), remote: true, method: :patch %>
+                <% else %>
+                    <%= link_to 'Cancel Subscribing Medium', subscribe_medium_path(p), remote: true, method: :patch %>
+                <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="col">
+            <% if p.musician != current_user.musician %>
+                <div id="freshable">
+                <% if SubscribeMusician.where(user: current_user, musician: p.musician).count == 0 %>
+                    <%= link_to 'Subscribe Musician', subscribe_musician_path(p.musician), remote: true, method: :patch %>
+                <% else %>
+                    <%= link_to 'Cancel Subscribing Musician', subscribe_musician_path(p.musician), remote: true, method: :patch %>
+                <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+</div>
+
+<% end %>
