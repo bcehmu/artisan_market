@@ -22,13 +22,15 @@
             <span>Address: </span><%= c.address %>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-around">
             
                 <% if c.user == current_user %>
                     <%= link_to 'Edit', edit_contact_path(c) %>
                 <% elsif c.user.luthier != nil %>
+                    <%= link_to 'Check the Store', luthier_path(c.user.luthier) %>
                     <%= link_to 'Subscribe Luthier', subscribe_luthier_path(c.user.luthier), remote: true, method: :patch %>
                 <% elsif c.user.musician != nil %>
+                    <%= link_to 'Check the Media', musician_path(c.user.musician) %>
                     <%= link_to 'Subscribe Musician', subscribe_musician_path(c.user.musician), remote: true, method: :patch %>
                 <% end %>
             
