@@ -14,7 +14,8 @@ Usually mass-production products sacrify some degree of quality to efficiency an
 ## Problems to be solved
 
 In the age of internet, messaging is fast and cheap, but building healthy industrial ecology could be misled by fast expansion.
-- For a relative small market as custom instrument, participants need to be responsible for their communication as well as their works. Meticulous invitation for new user to be granted role of market player is a good way of healthy expansion.
+The project author has some custom guitars ordering experience and certified basic guitar maintenance ability, enjoy custom guitar/bass for its quality and opportunity to learn from luthiers. But to understand what is luthier's major concern, author discussed with luthier friend specific for this project, with following ideas formed afterwards:
+- For a relative small market as custom instrument, participants need to be responsible for their communication as well as their works. Meticulous invitation for new user to be granted role of market player is a good way of healthy expansion. Immoral market player is the poison to be guarded against.
 - Subscribing functionality is good for subscriber's efficiency and player's potential campaigns.
 - Basic functionality are needed: editing profile, editing products' info for luthiers and editing media info for musicians, browse and search for all users. 
 
@@ -42,9 +43,32 @@ Each with specific accessibility:
 - [AWS S3](https://aws.amazon.com/) for media storage
 - [Heroku](https://www.heroku.com/) for deployment
 
-## Features
+## App structure
+
+### Ruby on Rails for MVC
+- Mostly following rails convention for MVC structure.
+- Models: User, Luthier, Musician, Product, Medium, Contact, SubscribeLuthier, SubscribeMusician, SubscribeProduct, SubscribeMedium, LuthierInvitation, MusicianInvitation. With User model as the center, Luthier and Musician and following are nearly symmetric.
+- Controllers and Views are created as needed. Except Filters controller, all controllers have corresponding models and conventional views needed. The Filters controller is for search functionality, redirecting to show the result in other controllers' views without saving related search data.
+- One special use is for invitation, Luthier and Musician edit invitations rendering under invitations' controllers and views, User applying for Luthier or Musician rendering invitations' controllers' #edit actions instead of #new action, which lead to checking logic in #update action. Unmatched input of invitation code is not saved and not being granted for luthier/musician role.
+
+### Database structure
+![erd](docs/artisan_market%20ERD.jpeg "ERD")
+- User model is the starting point and center of data structure.
+Contact model could be understand as extra info of User, but keeps User model cleaner, 'belongs_to' User, which 'has_one' contact.
+- Luthier and Musican, with each appending extra models such as LuthierInvitation/MusicianInvitation, Product/Medium, mostly symmetric, Luthier's in one side and Musician in the other. Luthier/Musican 'belongs_to' User and has one-to-one relationship with User.
+- Luthier and Musician models are seperated from User model, considering they need different features for views and controllers, and could make models cleaner.
+- Subscribe related models are simple and uniformly defined, with 'user:references' pointing to subscriber's user_id, the other pointing to the instance subscribed, luthier/musician/product/medium. This allows subscribe within same kind, for example, luthier subscribing to another luthier.
+- Product is the work of Luthier, Medium is the work of Musician, simple relationships with 'belongs_to' and 'has_many', similarly with LuthierInvitation and MusicianInvitation models.
+
+
+
 
 ## Sitemap
+![sitemap](docs/artisan_market-sitemap.png "Sitemap")
+
+
+## Screenshot
+![screenshot](docs/screenshot-artisan-market.PNG "Screenshot")
 
 ## Third-party services
 
