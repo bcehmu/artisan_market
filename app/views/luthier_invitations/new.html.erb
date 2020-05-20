@@ -1,8 +1,8 @@
-
+<%# This is the page for luthier to add invitation code for inviting other users applying for role of luthier %>
 
 
 <%= render "shared/chose_nav" %>
-
+<%# @invi is initialized in controller %>
 <% if current_user.luthier != nil %>
 <%= form_for @invi do |p| %>
     <div class="container p-3">
@@ -24,6 +24,7 @@
 <% end %>
 <% end %>
 
+<%# show previously saved invitation status %>
 <div class="container">
 <table class="table table-striped">
     <thead>
@@ -37,6 +38,7 @@
         <% @invitations.each do |p| %>
         <tr>
         <td class=""><%= p.msg %></td>
+        <%# if a invitation code already occupied by a user, add a button to the user's page, or a button to delete an unoccupied invitation code %>
         <% if p.user_id != nil %>
             <td class=""><%= User.find(p.user_id).email %></td>
             <td class=""><%= link_to 'Watch', luthier_path(User.find(p.user_id).luthier), method: "get" %></td>
@@ -50,5 +52,5 @@
 
 </div>
 
-<h1>LuthierInvitations#new</h1>
-<p>Find me in app/views/luthier_invitations/new.html.erb</p>
+<%# <h1>LuthierInvitations#new</h1>
+<p>Find me in app/views/luthier_invitations/new.html.erb</p> %>

@@ -1,3 +1,5 @@
+<%# This is the partial for chosing navbar depending on if current_user is a luthier or musician or normal user %>
+
 <% if current_user.luthier != nil %>
 <%= render "shared/nav_luthier" %>
 <% elsif current_user.musician != nil %>

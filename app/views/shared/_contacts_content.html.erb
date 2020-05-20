@@ -1,34 +1,42 @@
+<%# This is the partial for showing Contacts content %>
+<%# The variable @contacts is defined in contacts_controller.rb, all or part of model Contact's data %>
 <div class="pt-3">
 <% @contacts.each do |c| %>
 <div class="contactcard container border border-dark rounded">
     <div class="row justify-content-center">
     <div class="col border border-dark rounded justify-content-center">
+        <%# To show contact's avatar if attached %>
         <%= image_tag c.avatar, class: 'm-2 rounded img-thumbnail' if c.avatar.attached? %>
     </div>
     
     
     <div class="col justify-content-center align-self-center">
         <div class="row justify-content-center">
+            <%# To show contact's name and description %>
             <div class="col"><%= c.name %></div>
             <div class="col"><%= c.description %></div>
         </div>
 
         <div class="row justify-content-center">
+            <%# To show contact's email and prefered_frequency %>
             <div class="col"><span>Email: </span><%= c.email %></div>
             <div class="col"><%= c.prefered_frequency %></div>
         </div>
 
         <div class="row justify-content-center">
+        <%# To show contact's address %>
             <span>Address: </span><%= c.address %>
         </div>
 
         <div class="row justify-content-around">
-            
+                <%# Add button, 'Edit' if belongs to current user %>
                 <% if c.user == current_user %>
                     <%= link_to 'Edit', edit_contact_path(c) %>
+                <%# Add button, go to luthier's store or subscribe this luthier if it's not current user %>
                 <% elsif c.user.luthier != nil %>
                     <%= link_to 'Check the Store', luthier_path(c.user.luthier) %>
                     <%= link_to 'Subscribe Luthier', subscribe_luthier_path(c.user.luthier), remote: true, method: :patch %>
+                <%# Add button, go to musician's media page or subscribe this musician if it's not current user %>
                 <% elsif c.user.musician != nil %>
                     <%= link_to 'Check the Media', musician_path(c.user.musician) %>
                     <%= link_to 'Subscribe Musician', subscribe_musician_path(c.user.musician), remote: true, method: :patch %>

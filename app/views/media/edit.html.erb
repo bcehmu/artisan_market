@@ -1,9 +1,9 @@
-
+<%# This is the page for editing a specific medium's data if authorized %>
 
 <%= render "shared/chose_nav" %>
 
 
-
+<%# @medium is defined in media_controller.rb %>
 
 <% if current_user == @medium.musician.user %>
     <%= form_for @medium do |p| %>
@@ -11,15 +11,18 @@
 
         <div class="row justify-content-center border border-dark rounded p-2">
                 <div class="col">
+                    <%# To show and upload picture %>
                     <%= image_tag @medium.picture, class: 'm-2 rounded img-thumbnail' if @medium.picture.attached? %>
                     <%= p.label :picture %>
                     <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
                 </div>
                 <div class="col align-self-center">
+                    <%# To edit name %>
                     <%= p.label(:name, class:"pr-2") %>
                     <%= p.text_field(:name) %>
                 </div>
                 <div class="col align-self-center p-2">
+                    <%# To edit link %>
                     <%= p.label(:link, class:"pr-2") %>
                     <%= p.text_field(:link) %>
                 </div>
@@ -27,6 +30,7 @@
         <div class="row justify-content-center border border-dark rounded p-2">
             
             <div class="col align-self-center p-2">
+            <%# To edit description %>
             <%= p.label(:description, class:"pr-2") %>
             <%= p.text_area(:description, cols: "80", rows: "6") %>
             </div>
@@ -49,5 +53,5 @@
     <%# redirect_to "/media" %>
 <% end %>
 
-<h1>Media#edit</h1>
-<p>Find me in app/views/media/edit.html.erb</p>
+<%# <h1>Media#edit</h1>
+<p>Find me in app/views/media/edit.html.erb</p> %>

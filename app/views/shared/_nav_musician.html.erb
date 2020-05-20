@@ -7,18 +7,24 @@
         <li class="nav-item dropdown col">
         <div class="topoption"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Edit+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%# To edit musician's Profile (contact info) %>
                 <%= link_to "Profile", contacts_edit_path(current_user.contact), class: "dropdown-item" %>
+                <%# To edit musician's media (media list) %>
                 <%= link_to "Media", musician_path(current_user.musician), class: "dropdown-item" %>
+                <%# To create a new medium for current musician %>
                 <%= link_to "New Medium", new_medium_path, class: "dropdown-item" %>
-                <% link_to "Subscriptions", products_path, class: "dropdown-item" %>
+                <%# To edit subscription list (under construction) %>
+                <%# link_to "Subscriptions", products_path, class: "dropdown-item" %>
             </div>
         </div>
         </li>
         <li class="nav-item dropdown col">
         <div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Home+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%# To add or delete Invitation Code %>
                 <%= link_to ("Invite"), new_musician_invitation_path, method: :get, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
+                <%# To logout %>
                 <%= link_to ("Logout: " + current_user.email), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
         </div>
@@ -27,15 +33,17 @@
         <div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> +Browse+ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
+                <%# To products page %>
                 <%= link_to "Browse Products", products_path, class: "dropdown-item" %>
+                <%# To media page %>
                 <%= link_to "Browse Media", media_path, class: "dropdown-item" %>
+                <%# To contacts page %>
                 <%= link_to "Browse Contacts", contacts_path, class: "dropdown-item" %>
+                <%# To search products %>
                 <%= link_to "Filter Products", filters_search_path(type: "product"), class: "dropdown-item" %>
+                <%# To search media %>
                 <%= link_to "Filter Media", filters_search_path(type: "medium"), class: "dropdown-item" %>
-                <!--- <form class="form-inline my-2 my-lg-0 dropdown-item" action="/filters/search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="word">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>--->
+                
 
                 
                 

@@ -1,4 +1,4 @@
-
+<%# This is the page search/filter products or media %>
 
 <%= render "shared/chose_nav" %>
 
@@ -12,7 +12,8 @@
         <li>Square-bracket [] for multiple words, seperated with comma, without space</li>   
     <ul>   
     <br>
-
+<%# param :search is for product, :search_medium for medium %>
+<%# params sent to filters_controller which redirects to products or media page with filter %>
 <% if params[:type] == "product" %>
     <%= form_with(url: '/filters', method: "get") do %>
         <%= label_tag(:label, "Word to be searched for") %>
@@ -29,5 +30,5 @@
     <% end %>
 <% end %>
 
-<h1>Filters#search</h1>
-<p>Find me in app/views/filters/search.html.erb</p>
+<%# <h1>Filters#search</h1>
+<p>Find me in app/views/filters/search.html.erb</p> %>

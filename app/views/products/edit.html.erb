@@ -1,37 +1,43 @@
-
+<%# This is the page for editing a specific product's data if authorized %>
 
 <%= render "shared/chose_nav" %>
 
+<%# if cancancan module used ...%>
 <%# ability=Ability.new(current_user) %>
 <%# if ability.can? :write, Product %>
 
-
+<%# @product is defined in products_controller.rb %>
 <% if current_user == @product.luthier.user %>
     <%= form_for @product do |p| %>
     <div class="container p-3">
 
         <div class="row justify-content-center border border-dark rounded p-2">
                 <div class="col">
+                    <%# To show and upload picture %>
                     <%= image_tag @product.picture, class: 'm-2 rounded img-thumbnail' if @product.picture.attached? %>
                     <%= p.label :picture %>
                     <%= p.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
                 </div>
                 <div class="col align-self-center">
+                    <%# To edit name %>
                     <%= p.label(:name, class:"pr-2") %>
                     <%= p.text_field(:name) %>
                 </div>
         </div>
         <div class="row justify-content-between border border-dark rounded p-2">
             <div class="col align-self-center p-2">
+            <%# To edit category %>
             <%= p.label(:category, class:"pr-2") %>
             <%= p.text_field(:category) %>
             </div>
             <div class="col align-self-center p-2">
+            <%# To edit description %>
             <%= p.label(:description, class:"pr-2") %>
             <%= p.text_area(:description, cols: "80", rows: "6") %>
             </div>
         </div>
         <div class="row justify-content-center border border-dark rounded p-2">
+                <%# To edit base_price %>
                 <%= p.label(:base_price, class:"pr-2") %>
                 <%= p.number_field(:base_price) %>
         </div>
@@ -52,5 +58,5 @@
     <%# redirect_to "/products" %>
 <% end %>
 
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<%# <h1>Products#edit</h1>
+<p>Find me in app/views/products/edit.html.erb</p> %>

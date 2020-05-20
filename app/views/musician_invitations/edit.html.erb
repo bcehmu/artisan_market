@@ -1,11 +1,11 @@
-
-
+<%# This is the page for entering invitation code applying musician's role %>
+<%# submitted message will be checked in controller, only a matched user will be granted %>
 
 <%= render "shared/chose_nav" %>
 
 <% if ((current_user.luthier == nil) and (current_user.musician == nil)) %>
     <div class="row justify-content-center p-2">
-
+    <%# @inv is initialized in controller, msg sent to update action for check %>
     <%= form_for @inv do |i| %>
     <div class="pr-2">Enter Invitation Code:</div>
     <%= i.text_field(:msg) %>
@@ -14,5 +14,5 @@
     </div>
 <% end %>
 
-<h1>MusicianInvitations#edit</h1>
-<p>Find me in app/views/musician_invitations/edit.html.erb</p>
+<%# <h1>MusicianInvitations#edit</h1>
+<p>Find me in app/views/musician_invitations/edit.html.erb</p> %>

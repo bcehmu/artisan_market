@@ -1,27 +1,33 @@
-
+<%# This is the partial for showing Products content %>
+<%# The variable @products is defined in products_controller.rb, all or part of model Medium's data %>
 <% @products.each do |p| %>
 <div class="productcard container border border-dark rounded ">
     <div class="row">
+        <%# To show product's picture if attached %>
         <%= image_tag p.picture, class: 'product-picture m-2 rounded', width: '95%' if p.picture.attached? %>
     </div>
 
     <div class="row justify-content-between">
+        <%# To show product's name and description %>
         <div class="col"><%= p.name %></div>
         <div class="col"><%= p.description %></div>
     </div>
 
     <div class="row justify-content-between">
+        <%# To show product's base_price %>
         <div class="col">Base Price: <%= p.base_price %></div>
         
     </div>
 
     <div class="row justify-content-between">
         <div class="col">
+            <%# Add button, 'Edit' and 'Delete' if belongs to current luthier %>
             <% if p.luthier == current_user.luthier %>
                 <%= link_to 'Edit', edit_product_path(p) %>
                 <%= link_to 'Delete', product_path(p), method: "delete"%>
             <% else %>
                 <div id="freshable">
+                <%# Add button, 'Subscribe' or 'Cancel' depends on current subscribing status %>
                 <% if SubscribeProduct.where(user: current_user, product: p).count == 0 %>
                     <%= link_to 'Subscribe Product', subscribe_product_path(p), remote: true, method: :patch %>
                 <% else %>
@@ -31,6 +37,7 @@
             <% end %>
         </div>
         <div class="col">
+            <%# Add button, 'Subscribe' or 'Cancel' depends on current subscribing status %>
             <% if p.luthier != current_user.luthier %>
                 <div id="freshable">
                 <% if SubscribeLuthier.where(user: current_user, luthier: p.luthier).count == 0 %>

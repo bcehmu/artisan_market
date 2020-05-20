@@ -1,27 +1,33 @@
-
+<%# This is the partial for showing Media content %>
+<%# The variable @media is defined in media_controller.rb, all or part of model Medium's data %>
 <% @media.each do |p| %>
 <div class="productcard container border border-dark rounded">
     <div class="row">
+        <%# To show medium's picture if attached %>
         <%= image_tag p.picture, class: 'product-picture m-2 rounded', width: '95%' if p.picture.attached? %>
     </div>
 
     <div class="row justify-content-between">
+        <%# To show medium's name and description %>
         <div class="col"><%= p.name %></div>
         <div class="col"><%= p.description %></div>
     </div>
 
     <div class="row justify-content-between">
+        <%# To show medium's link %>
         <div class="col">Link: <%= link_to p.link, p.link %></div>
         
     </div>
 
     <div class="row justify-content-between">
         <div class="col">
+            <%# Add button, 'Edit' and 'Delete' if belongs to current musician %>
             <% if p.musician == current_user.musician %>
                 <%= link_to 'Edit', edit_medium_path(p) %>
                 <%= link_to 'Delete', medium_path(p), method: "delete"%>
             <% else %>
                 <div id="freshable">
+                <%# Add button, 'Subscribe' or 'Cancel' depends on current subscribing status %>
                 <% if SubscribeMedium.where(user: current_user, medium: p).count == 0 %>
                     <%= link_to 'Subscribe Medium', subscribe_medium_path(p), remote: true, method: :patch %>
                 <% else %>
@@ -31,6 +37,7 @@
             <% end %>
         </div>
         <div class="col">
+            <%# Add button, 'Subscribe' or 'Cancel' depends on current subscribing status %>
             <% if p.musician != current_user.musician %>
                 <div id="freshable">
                 <% if SubscribeMusician.where(user: current_user, musician: p.musician).count == 0 %>
