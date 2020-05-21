@@ -6,5 +6,5 @@ class Contact < ApplicationRecord
 
   enum prefered_frequency: [:instant, :day, :week, :indefinite]
 
-  
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 end

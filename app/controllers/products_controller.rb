@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    
     @prod = Product.create(name: params[:product][:name], category: params[:product][:category], description: params[:product][:description], base_price: params[:product][:base_price], luthier_id: current_user.luthier.id)
     @prod.picture.attach(params[:product][:picture])
     @prod.save

@@ -27,9 +27,9 @@ The project author has some custom guitars ordering experience and certified bas
 
 ## Features
 
-Three types of roles, user (not luthier or musician), luthier and musician, exclusively.
+Three types of roles after registration, user (not luthier or musician), luthier and musician, exclusively.
 Each with specific accessibility: 
-- Every role could browse and search, editing profile.
+- Every role could browse and search, editing profile, subscribing luthiers/musicians/products/media.
 - User could apply for role as luthier or musician, by invitation from other luthier or musician, through entering invitation code.
 - Luthier and musican are nearly symmetric, they could edit their own products/media, add or delete non-occupied invitation code.
 - Partials (some part of layout and components) such as buttons and menus are designed for current role as well.
@@ -52,7 +52,7 @@ Each with specific accessibility:
 - One special use is for invitation, Luthier and Musician edit invitations rendering under invitations' controllers and views, User applying for Luthier or Musician rendering invitations' controllers' #edit actions instead of #new action, which lead to checking logic in #update action. Unmatched input of invitation code is not saved and not being granted for luthier/musician role.
 
 ### Database structure
-![erd](docs/artisan_market%20ERD.jpeg "ERD")
+![erd](docs/artisan_market-ERD.png "ERD")
 - User model is the starting point and center of data structure.
 Contact model could be understand as extra info of User, but keeps User model cleaner, 'belongs_to' User, which 'has_one' contact.
 - Luthier and Musican, with each appending extra models such as LuthierInvitation/MusicianInvitation, Product/Medium, mostly symmetric, Luthier's in one side and Musician in the other. Luthier/Musican 'belongs_to' User and has one-to-one relationship with User.
@@ -129,6 +129,15 @@ Bootstrap's class "container" and "row" "col" arrange layout like a grid and aut
 - Currently image was sized by bootstrap class "img-thumbnail" and "img-fluid" .
 - Navbars with drop-down menu are created using bootstrap as well. To function well, properly nested structure guidedy by official document is necessary.
 
+## Tasks Planning and Tracking
+- This is a student assignment project of CoderAcademy in mid 2020, with 2 weeks time to plan and develop.
+- [Trello board](https://trello.com/b/653aWeq1/artisan-market) is used to plan and track along the process, and is the first step to start.
+- Discussion with luthier about concerns of this specific tool is conducted in the begining well, to understand the some aspects of pain points of current industry from luthier's view. 
+- ERD at the begining consisted of User,Contact,Luthier,Musican, Product,Medium and related Subscribe* models with their relationships, with the idea of keeping data schema clear and expandable in mind after reading several articles about good practice of data schema design. This project choose to use smaller tables instead of larger table of mixed info. Although in current models, Luthier and Musician with their relatives are near symmetric, but they could be added with specific features later independently. 
+- The Invitation part of ERD was added later when solution came clearer. Invitation part is a special but critical feature of this market type from author's view. 
+- Wireframes about sitemap was vaguely formed before ERD but more clearly designed after hand-drawing ideas with ipad (Procreate app). 
+- Documentation through the whole process, beyond this README file, all of essential commands and links were recorded. ERD was lightly corrected for redundancy or naming convention during the coding.
+- Last part before submission assignment was about refactoring code, refining documents.
 
 ## Configuration notes:
 
@@ -191,6 +200,7 @@ heroku run rails db:seed
 - [The deployed site at Heroku](https://shrouded-wave-42515.herokuapp.com/)
 - [ERD](https://app.lucidchart.com/invitations/accept/a5f8eeda-5c7e-4930-9a24-e9fbbd283dea)
 - [GitHub Repository](https://github.com/bcehmu/artisan_market)
+- [Trello board](https://trello.com/b/653aWeq1/artisan-market)
 
 
 
