@@ -39,8 +39,10 @@
             </div>
             <div class="col">
                 <%# To edit prefered_frequency %>
+                <%# {instant: -1, day: 0, week: 1, indefinite: 2} %>
+                <div class="row justify-content-center">instant: -1, day: 0, week: 1, indefinite: 2</div>
                 <div class="row justify-content-center"><%= c.label :prefered_frequency %></div>
-                <div class="row justify-content-center"><%= c.number_field(:prefered_frequency) %></div>
+                <div class="row justify-content-center"><%= c.number_field(:prefered_frequency, in: -1..2) %></div>
             </div>
             <div class="col">
                 <%# To edit address %>

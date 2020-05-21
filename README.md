@@ -31,7 +31,7 @@ Three types of roles after registration, user (not luthier or musician), luthier
 Each with specific accessibility: 
 - Every role could browse and search, editing profile, subscribing luthiers/musicians/products/media.
 - User could apply for role as luthier or musician, by invitation from other luthier or musician, through entering invitation code.
-- Luthier and musican are nearly symmetric, they could edit their own products/media, add or delete non-occupied invitation code.
+- Luthier and musician are nearly symmetric, they could edit their own products/media, add or delete non-occupied invitation code.
 - Partials (some part of layout and components) such as buttons and menus are designed for current role as well.
 
 ## Tech stack
@@ -55,7 +55,7 @@ Each with specific accessibility:
 ![erd](docs/artisan_market-ERD.png "ERD")
 - User model is the starting point and center of data structure.
 Contact model could be understand as extra info of User, but keeps User model cleaner, 'belongs_to' User, which 'has_one' contact.
-- Luthier and Musican, with each appending extra models such as LuthierInvitation/MusicianInvitation, Product/Medium, mostly symmetric, Luthier's in one side and Musician in the other. Luthier/Musican 'belongs_to' User and has one-to-one relationship with User.
+- Luthier and Musician, with each appending extra models such as LuthierInvitation/MusicianInvitation, Product/Medium, mostly symmetric, Luthier's in one side and Musician in the other. Luthier/Musician 'belongs_to' User and has one-to-one relationship with User.
 - Luthier and Musician models are seperated from User model, considering they need different features for views and controllers, and could make models cleaner.
 - Subscribe related models are simple and uniformly defined, with 'user:references' pointing to subscriber's user_id, the other pointing to the instance subscribed, luthier/musician/product/medium. This allows subscribe within same kind, for example, luthier subscribing to another luthier.
 - Product is the work of Luthier, Medium is the work of Musician, simple relationships with 'belongs_to' and 'has_many', similarly with LuthierInvitation and MusicianInvitation models.
@@ -65,6 +65,18 @@ Contact model could be understand as extra info of User, but keeps User model cl
 
 ## Sitemap
 ![sitemap](docs/artisan_market-sitemap.png "Sitemap")
+
+## Wireframe
+
+### Initial wireframe
+![luthier](docs/init_luthier_profile.jpg "luthier")
+![musician](docs/init_musician_profile.jpg "musician")
+![index](docs/init_index.jpg "index")
+![navbar](docs/init_navbar.jpg "navbar")
+![search](docs/init_search.jpg "search")
+![profile](docs/init_luthier_editor.jpg "profile")
+
+
 
 
 ## Screenshot
@@ -133,7 +145,7 @@ Bootstrap's class "container" and "row" "col" arrange layout like a grid and aut
 - This is a student assignment project of CoderAcademy in mid 2020, with 2 weeks time to plan and develop.
 - [Trello board](https://trello.com/b/653aWeq1/artisan-market) is used to plan and track along the process, and is the first step to start.
 - Discussion with luthier about concerns of this specific tool is conducted in the begining well, to understand the some aspects of pain points of current industry from luthier's view. 
-- ERD at the begining consisted of User,Contact,Luthier,Musican, Product,Medium and related Subscribe* models with their relationships, with the idea of keeping data schema clear and expandable in mind after reading several articles about good practice of data schema design. This project choose to use smaller tables instead of larger table of mixed info. Although in current models, Luthier and Musician with their relatives are near symmetric, but they could be added with specific features later independently. 
+- ERD at the begining consisted of User,Contact,Luthier,Musician, Product,Medium and related Subscribe* models with their relationships, with the idea of keeping data schema clear and expandable in mind after reading several articles about good practice of data schema design. This project choose to use smaller tables instead of larger table of mixed info. Although in current models, Luthier and Musician with their relatives are near symmetric, but they could be added with specific features later independently. 
 - The Invitation part of ERD was added later when solution came clearer. Invitation part is a special but critical feature of this market type from author's view. 
 - Wireframes about sitemap was vaguely formed before ERD but more clearly designed after hand-drawing ideas with ipad (Procreate app). 
 - Documentation through the whole process, beyond this README file, all of essential commands and links were recorded. ERD was lightly corrected for redundancy or naming convention during the coding.

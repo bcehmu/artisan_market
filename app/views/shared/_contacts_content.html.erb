@@ -18,14 +18,18 @@
         </div>
 
         <div class="row justify-content-center">
-            <%# To show contact's email and prefered_frequency %>
-            <div class="col"><span>Email: </span><%= c.email %></div>
-            <div class="col"><%= c.prefered_frequency %></div>
+            <%# To show contact's email %>
+            <span>Email: &nbsp</span><%= c.email %>
+        </div>
+
+        <div class="row justify-content-center">
+            <%# To show contact's prefered_frequency %>
+            <span>Frequency of communication: &nbsp</span><%= c.prefered_frequency %>
         </div>
 
         <div class="row justify-content-center">
         <%# To show contact's address %>
-            <span>Address: </span><%= c.address %>
+            <span>Address: &nbsp</span><%= c.address %>
         </div>
 
         <div class="row justify-content-around">

@@ -5,8 +5,8 @@ class ContactsController < ApplicationController
 
   def create
     
-    
-    @contact.update(name: params[:contact][:name], description: params[:contact][:description], email: params[:contact][:email], address: params[:contact][:address], prefered_frequency: params[:contact][:prefered_frequency])
+    freq = @prefered_frequency.key(params[:contact][:prefered_frequency].to_i)
+    @contact.update(name: params[:contact][:name], description: params[:contact][:description], email: params[:contact][:email], address: params[:contact][:address], prefered_frequency: freq)
     @contact.avatar.attach(params[:contact][:avatar])
     @contact.logo.attach(params[:contact][:logo])
     @contact.save
@@ -26,7 +26,9 @@ class ContactsController < ApplicationController
     # raise params.inspect
     
     @contact = Contact.find(params[:id].to_i)
-    @contact.update(name: params[:contact][:name], description: params[:contact][:description], email: params[:contact][:email], address: params[:contact][:address], prefered_frequency: params[:contact][:prefered_frequency])
+    freq = @prefered_frequency.key(params[:contact][:prefered_frequency].to_i)
+    @contact.update(name: params[:contact][:name], description: params[:contact][:description], email: params[:contact][:email], address: params[:contact][:address], prefered_frequency: freq)
+    # @contact.update(name: params[:contact][:name], description: params[:contact][:description], email: params[:contact][:email], address: params[:contact][:address], prefered_frequency: params[:contact][:prefered_frequency])
     @contact.avatar.attach(params[:contact][:avatar])
     @contact.logo.attach(params[:contact][:logo])
     @contact.save
@@ -35,6 +37,7 @@ class ContactsController < ApplicationController
 
   private
   def setup
+    @prefered_frequency = {instant: -1, day: 0, week: 1, indefinite: 2}
     @contacts = Contact.all
     @contact = Contact.where(user: current_user).first
     if @contact == nil
