@@ -62,19 +62,12 @@ Contact model could be understand as extra info of User, but keeps User model cl
 
 
 
-
-## Sitemap
-![sitemap](docs/artisan_market-sitemap.png "Sitemap")
-
 ## Wireframe
 
 ### Initial wireframe
 ![luthier](docs/init_luthier_profile.jpg "luthier")
 ![musician](docs/init_musician_profile.jpg "musician")
-![index](docs/init_index.jpg "index")
-![navbar](docs/init_navbar.jpg "navbar")
-![search](docs/init_search.jpg "search")
-![profile](docs/init_luthier_editor.jpg "profile")
+
 
 
 
